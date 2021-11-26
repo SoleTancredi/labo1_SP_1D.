@@ -388,7 +388,9 @@ int perrito_laQueFiltra(void* pElement)
 	{
 		retorno = 2;
 
-		if(strcmp((*pBuffer).raza, "Galgo") == 0 && (*pBuffer).edad > 10 && (*pBuffer).cantidadComidaRacion < 200.00)
+		if(strcmp(pBuffer->raza, "Galgo") == 0 &&
+				(*pBuffer).edad > 10 &&
+				(*pBuffer).cantidadComidaRacion < 200.00)
 		{
 			retorno = 0;
 		}

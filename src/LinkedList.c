@@ -597,6 +597,7 @@ LinkedList* ll_filter(LinkedList* this,  int (*pFunc)(void*))
 	Perrito* pElement;
 //	Perrito* pbuffer;
 
+	puts("\n ACA ENTRA antes de null");
 	if(this != NULL && pFunc != NULL)
 	{
 		perritosGalgo  = ll_newLinkedList();
@@ -605,7 +606,7 @@ LinkedList* ll_filter(LinkedList* this,  int (*pFunc)(void*))
 			pElement = ll_get(this, i);
 			if(pFunc(pElement) == 0)
 			{
-
+                puts("\n ACA ENTRA");
 				ll_add(perritosGalgo,ll_get(this, i));
 			}
 		}

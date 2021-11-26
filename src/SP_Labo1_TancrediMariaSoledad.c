@@ -19,31 +19,11 @@
 int main(void)
 {
 	LinkedList* perritoList  = ll_newLinkedList();
+	LinkedList* galgos = ll_newLinkedList();
 	int option;
 	int flagCarga = 0;
 	Perrito* pbuffer;
 	Perrito* pbuffer2;
-
-	/*pbuffer = perrito_newParametros3("12", "pepe", "2", "15", "Galgo", "23");
-	pbuffer2 = perrito_newParametros3("15", "sapo", "16", "12", "Galgo", "600.5");
-	if(perrito_laQueFiltra(pbuffer) == 0)
-	{
-
-	}
-	else
-	{
-		puts("\n ERROR");
-	}
-	if(perrito_laQueFiltra(pbuffer2) == 0)
-	{
-		puts("\n BIIENNNN");
-
-	}
-	else
-	{
-		puts("\n ERROR PERO ACA TENIA QUE ANDAR");
-	}
-    printf("\n esta es la comida %.2f", pbuffer->cantidadComidaRacion);*/
 
 
 	 do
@@ -52,10 +32,10 @@ int main(void)
 		if( utn_getNumber(&option,""
 				"\n[1] Cargar datos de perritos desde data.csv (modo texto)."
 				"\n[2] Listar perritos ordenados de manera ascedente por nombre."
-				"\n[3] Agregar empleado "
-				"\n[4] Modificar datos de empleado"
-				"\n[5] Eliminar empleado "
-				"\n[6] Listar todos los empleados"
+				"\n[3] Mapeo"
+				"\n[4] Perritos con raciones de comida"
+				"\n[5] Filter "
+				"\n[6] Guardar en un nuevo archivo"
 				"\n[7] Salir. "
 				"\n »» INGRESE UNA OPCION:  ", "\n × ERROR. ", 1, 7, 1) == 0)
 		{
@@ -120,7 +100,7 @@ int main(void)
 				case 5:
 					if(flagCarga == 1)
 					{
-						if(controller_llFilter(perritoList) == 0)
+						if(controller_llFilter(perritoList,galgos) == 0)
 						{
 							puts("\n ANDA");
 						}
@@ -132,6 +112,21 @@ int main(void)
 
 					break;
 				case 6:
+					if(flagCarga == 1)
+					{
+						if(controller_saveAsText("galgosFlaquitos.csv", galgos) == 0)
+						{
+							printf("\n »» EL ARCHIVO SE GUARDO EXITOSAMENTE.");
+						}
+						else
+						{
+							printf("\n X No se pudo guardar el archivo en modo texto.");
+						}
+					}
+					else
+					{
+						printf("\n X No existen datos cargados.");
+					}
 
 					break;
 				case 7:
@@ -141,9 +136,6 @@ int main(void)
 			}
 		}
 	 }while(option != 7);
-
-
-
 
 
 	return EXIT_SUCCESS;

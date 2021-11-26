@@ -156,21 +156,22 @@ int controller_llMap(LinkedList* this)
    return retorno;
 }
 
-int controller_llFilter(LinkedList* this)
+int controller_llFilter(LinkedList* this, LinkedList* this2)
 {
    int retorno = -1;
-   LinkedList* listBuffer = NULL;
 
-   if(this != NULL)
+   if(this != NULL && this2 != NULL)
    {
-	 listBuffer = ll_filter(this, perrito_laQueFiltra);
-	 controller_ListPerritosPunto3(listBuffer);
+	 this2 = ll_filter(this, perrito_laQueFiltra);
+	 controller_ListPerritosPunto3(this2);
      retorno = 0;
 
    }
 
    return retorno;
 }
+
+
 
 /*
 int controller_maxId(LinkedList* pArrayListEmployee, int* id)
