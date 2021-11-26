@@ -22,11 +22,6 @@ int main(void)
 	int option;
 	Perrito* pbuffer;
 
-	pbuffer = perrito_newParametros("12", "yicon", "45.2", "3", "galgo");
-	perrito_showUnit(pbuffer);
-
-	//controller_loadFromText("perritos.csv", perritoList);
-
 	 do
 	 {
 		 printf("\n\t\t »»»»» MENU PRINCIPAL «««««\n");
@@ -51,9 +46,9 @@ int main(void)
 					{
 						printf("\n X No se han cargado los datos.");
 					}
-
 					break;
 				case 2:
+
 
 					break;
 				case 3:
