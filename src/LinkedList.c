@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
+#include "Perrito.h"
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
@@ -570,5 +571,22 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
     return returnAux;
 
+}
+
+int ll_map(LinkedList* this, int (*pFunc)(void*))
+{
+	int retorno = -1;
+	Perrito* pElement;
+
+	if(this != NULL && pFunc != NULL)
+	{
+		for(int i = 0; i < ll_len(this); i++)
+		{
+			pElement = ll_get(this, i);
+			pFunc(pElement);
+			retorno = 0;
+		}
+	}
+	return retorno;
 }
 

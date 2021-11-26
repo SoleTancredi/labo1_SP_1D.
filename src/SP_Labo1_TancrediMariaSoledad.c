@@ -20,6 +20,11 @@ int main(void)
 {
 	LinkedList* perritoList  = ll_newLinkedList();
 	int option;
+	Perrito* pbuffer;
+
+	/*pbuffer = perrito_newParametros("12","sss", "5.6", "5", "jjjj");
+	perrito_laQueMapea(pbuffer);
+    printf("\n esta es la comida %.2f", pbuffer->cantidadComidaRacion);*/
 
 
 	 do
@@ -59,10 +64,20 @@ int main(void)
 
 					break;
 				case 3:
-
+                    if(controller_llMap(perritoList) == 0)
+                    {
+                    	printf("\n »» Mapeo correcto.");
+                    }
+                    else
+                    {
+                    	printf("\nTODO MALLLL");
+                    }
 					break;
 				case 4:
+                    if(controller_ListPerritosPunto3(perritoList) == 0)
+                    {
 
+                    }
 					break;
 				case 5:
 

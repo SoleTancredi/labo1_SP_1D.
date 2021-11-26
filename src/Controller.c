@@ -58,6 +58,21 @@ int controller_ListPerritos(LinkedList* pArrayListPerritos)
     return retorno;
 }
 
+int controller_ListPerritosPunto3(LinkedList* pArrayListPerritos)
+{
+	int retorno = -1;
+
+	if(pArrayListPerritos != NULL)
+	{
+		if(perrito_showListPunto3(pArrayListPerritos) == 0)
+		{
+			retorno = 0;
+		}
+	}
+
+    return retorno;
+}
+
 /** \brief Ordenar empleados
  *
  * \param path char*
@@ -124,6 +139,21 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPerritos)
 	}
 
     return retorno;
+}
+
+int controller_llMap(LinkedList* this)
+{
+   int retorno = -1;
+
+   if(this != NULL)
+   {
+	  if( ll_map(this, perrito_laQueMapea) == 0)
+	  {
+		  retorno = 0;
+	  }
+   }
+
+   return retorno;
 }
 
 /*

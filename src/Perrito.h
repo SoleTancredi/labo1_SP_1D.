@@ -17,6 +17,7 @@ typedef struct
     float peso;
     int edad;
     char raza[TAM_CHAR];
+    float cantidadComidaRacion;
 }Perrito;
 
 Perrito* perrito_new();
@@ -36,6 +37,12 @@ void perrito_showUnit(Perrito* this);
 int perrito_showList(LinkedList* this);
 void perrito_posterList();
 int perrito_sortNames(void* thisOne, void* thisTwo);
+int perrito_laQueMapea(void* pElement);
+int perrito_setCantidadComida(Perrito* this,float cantidadComida);
+int perrito_getCantidadComida(Perrito* this,float* cantidadComida);
+void perrito_posterListPunto3();
+int perrito_showListPunto3(LinkedList* this);
+void perrito_showUnitPunto3(Perrito* this);
 
 
 

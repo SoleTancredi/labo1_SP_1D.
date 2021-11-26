@@ -177,13 +177,40 @@ int perrito_getRaza(Perrito* this,char* raza)
 	return retorno;
 }
 
-void perrito_showUnit(Perrito* this)
+int perrito_setCantidadComida(Perrito* this,float cantidadComida)
+{
+	int retorno = -1;
+
+	if(this != NULL && cantidadComida > 0)
+	{
+		(*this).cantidadComidaRacion = cantidadComida;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+int perrito_getCantidadComida(Perrito* this,float* cantidadComida)
+{
+	int retorno = -1;
+
+	if(this != NULL && cantidadComida != NULL)
+	{
+		*cantidadComida = (*this).cantidadComidaRacion;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+void perrito_showUnitPunto3(Perrito* this)
 {
 	int id;
 	char nombre[21];
 	float peso;
 	int edad;
 	char raza[21];
+	float cantidadComida;
 
 	if(this != NULL)
 	{
@@ -191,11 +218,12 @@ void perrito_showUnit(Perrito* this)
 		&& perrito_getNombre(this, nombre) == 0
 		&& perrito_getPeso(this, &peso) == 0
 		&& perrito_getEdad(this, &edad) == 0
-		&& perrito_getRaza(this, raza) == 0)
+		&& perrito_getRaza(this, raza) == 0
+		&& perrito_getCantidadComida(this, &cantidadComida) == 0)
 
 
 		{
-			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s \n  ", id, nombre, peso, edad, raza);
+			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s   %-10.2f \n ", id, nombre, peso, edad, raza, cantidadComida);
 		}
 		else
 		{
@@ -203,6 +231,28 @@ void perrito_showUnit(Perrito* this)
 		}
 	}
 }
+
+int perrito_showListPunto3(LinkedList* this)
+{
+	int retorno = -1,cont=0;
+	Perrito* pAuxPerrito;
+
+	if(this != NULL)
+	{
+		perrito_posterListPunto3();
+		for(int i = 0; i < ll_len(this); i++)
+		{
+			pAuxPerrito = ll_get(this, i);
+			perrito_showUnitPunto3(pAuxPerrito);
+			cont++;
+			retorno = 0;
+		}
+		printf("\n\t\t\t Cantidad de perritos: %d",cont);
+	}
+
+	return retorno;
+}
+
 
 int perrito_showList(LinkedList* this)
 {
@@ -231,6 +281,13 @@ void perrito_posterList()
 	printf("\n_____________________________________________________________________\n");
 	printf("\n  %-6s     %-14s%-10s  %-15s  %-10s \n","ID ","NOMBRE "," PESO    ","EDAD  ", " RAZA  ");
 	printf("______________________________________________________________________\n");
+}
+void perrito_posterListPunto3()
+{
+	printf("\n\t  ## LISTADO DE PERRITOS ##");
+	printf("\n______________________________________________________________________________________\n");
+	printf("\n  %-6s     %-14s%-10s  %-15s  %-10s   %-10s \n","ID ","NOMBRE "," PESO    ","EDAD  ", " RAZA  ", "RACION DE COMIDA   ");
+	printf("_________________________________________________________________________________________\n");
 }
 
 int perrito_sortNames(void* thisOne, void* thisTwo)
@@ -261,6 +318,46 @@ int perrito_sortNames(void* thisOne, void* thisTwo)
 	return retorno;
 }
 
+int perrito_laQueMapea(void* pElement)
+{
+	int retorno = -1;
+	Perrito* pPerrito = (Perrito*) pElement;
+
+	if(pElement != NULL)
+	{
+		(*pPerrito).cantidadComidaRacion = (*pPerrito).peso * 23;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+
+void perrito_showUnit(Perrito* this)
+{
+	int id;
+	char nombre[21];
+	float peso;
+	int edad;
+	char raza[21];
+
+	if(this != NULL)
+	{
+		if(perrito_getId(this, &id) == 0
+		&& perrito_getNombre(this, nombre) == 0
+		&& perrito_getPeso(this, &peso) == 0
+		&& perrito_getEdad(this, &edad) == 0
+		&& perrito_getRaza(this, raza) == 0)
+
+
+		{
+			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s \n  ", id, nombre, peso, edad, raza);
+		}
+		else
+		{
+			puts("\n aca hay un error en unit");
+		}
+	}
+}
 
 
 
