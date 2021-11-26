@@ -20,10 +20,29 @@ int main(void)
 {
 	LinkedList* perritoList  = ll_newLinkedList();
 	int option;
+	int flagCarga = 0;
 	Perrito* pbuffer;
+	Perrito* pbuffer2;
 
-	/*pbuffer = perrito_newParametros("12","sss", "5.6", "5", "jjjj");
-	perrito_laQueMapea(pbuffer);
+	/*pbuffer = perrito_newParametros3("12", "pepe", "2", "15", "Galgo", "23");
+	pbuffer2 = perrito_newParametros3("15", "sapo", "16", "12", "Galgo", "600.5");
+	if(perrito_laQueFiltra(pbuffer) == 0)
+	{
+
+	}
+	else
+	{
+		puts("\n ERROR");
+	}
+	if(perrito_laQueFiltra(pbuffer2) == 0)
+	{
+		puts("\n BIIENNNN");
+
+	}
+	else
+	{
+		puts("\n ERROR PERO ACA TENIA QUE ANDAR");
+	}
     printf("\n esta es la comida %.2f", pbuffer->cantidadComidaRacion);*/
 
 
@@ -45,6 +64,7 @@ int main(void)
 				case 1:
 					if(controller_loadFromText("perritos.csv", perritoList) == 0)
 					{
+						flagCarga = 1;
 						printf("\n »» CARGA DE DATOS EXITOSA ");
 					}
 					else
@@ -53,33 +73,62 @@ int main(void)
 					}
 					break;
 				case 2:
-                  if( controller_sortPerritos(perritoList) == 0)
+                  if( flagCarga == 1)
 				   {
-					   controller_ListPerritos(perritoList);
+                	  if(controller_sortPerritos(perritoList) == 0)
+                	  {
+                		  controller_ListPerritos(perritoList);
+                	  }
+                	  else
+                	  {
+                		  printf("\n X No se ha realizado el ordenamiento.");
+                	  }
+
 				   }
                   else
 					{
-						printf("\n X No se ha realizado el ordenamiento.");
+						printf("\n X No hay elementos cargados.");
 					}
 
 					break;
 				case 3:
-                    if(controller_llMap(perritoList) == 0)
+                    if(flagCarga == 1)
                     {
-                    	printf("\n »» Mapeo correcto.");
+                    	if(controller_llMap(perritoList) == 0)
+                    	{
+                    		printf("\n »» Mapeo correcto.");
+                    	}
                     }
                     else
                     {
-                    	printf("\nTODO MALLLL");
+                    	printf("\n x No hay elementos cargados");
                     }
 					break;
 				case 4:
-                    if(controller_ListPerritosPunto3(perritoList) == 0)
+                    if(flagCarga == 1)
                     {
-
+                    	if(controller_ListPerritosPunto3(perritoList) != 0)
+                    	{
+                    		puts("\n x Error");
+                    	}
                     }
+                    else
+				  {
+					printf("\n x No hay elementos cargados");
+				  }
 					break;
 				case 5:
+					if(flagCarga == 1)
+					{
+						if(controller_llFilter(perritoList) == 0)
+						{
+							puts("\n ANDA");
+						}
+					}
+					else
+					{
+						puts("\n x No hay elementos cargados.");
+					}
 
 					break;
 				case 6:

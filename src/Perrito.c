@@ -38,6 +38,26 @@ Perrito* perrito_newParametros(char* idStr,char* nombreStr,char* pesoStr , char*
        return NULL;
 }
 
+Perrito* perrito_newParametros3(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr, char* cantComidaStr)
+{
+	Perrito* pBufferPerrito;
+
+	pBufferPerrito = perrito_new();
+
+	if(pBufferPerrito != NULL)
+	{
+       (*pBufferPerrito).id = atoi(idStr);
+       strcpy((*pBufferPerrito).nombre, nombreStr);
+       (*pBufferPerrito).peso = atof(pesoStr);
+       (*pBufferPerrito).edad = atoi(edadStr);
+       strcpy((*pBufferPerrito).raza, razaStr);
+       (*pBufferPerrito).cantidadComidaRacion = atof(cantComidaStr);
+
+       return pBufferPerrito;
+   	}
+       return NULL;
+}
+
 
 void perrito_delete(Perrito* this)
 {
@@ -359,6 +379,22 @@ void perrito_showUnit(Perrito* this)
 	}
 }
 
+int perrito_laQueFiltra(void* pElement)
+{
+	int retorno = -1;
+	Perrito* pBuffer = (Perrito*) pElement;
+
+	if(pElement != NULL)
+	{
+		retorno = 2;
+
+		if(strcmp((*pBuffer).raza, "Galgo") == 0 && (*pBuffer).edad > 10 && (*pBuffer).cantidadComidaRacion < 200.00)
+		{
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
 
 
 

@@ -43,6 +43,8 @@ int perrito_getCantidadComida(Perrito* this,float* cantidadComida);
 void perrito_posterListPunto3();
 int perrito_showListPunto3(LinkedList* this);
 void perrito_showUnitPunto3(Perrito* this);
+int perrito_laQueFiltra(void* pElement);
+Perrito* perrito_newParametros3(char* idStr,char* nombreStr,char* pesoStr , char* edadStr, char* razaStr, char* cantComidaStr);
 
 
 
