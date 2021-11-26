@@ -190,11 +190,12 @@ void perrito_showUnit(Perrito* this)
 		if(perrito_getId(this, &id) == 0
 		&& perrito_getNombre(this, nombre) == 0
 		&& perrito_getPeso(this, &peso) == 0
-		&& perrito_getRaza(this, raza) == 0
-		&& perrito_getEdad(this, &edad) == 0)
+		&& perrito_getEdad(this, &edad) == 0
+		&& perrito_getRaza(this, raza) == 0)
+
 
 		{
-			printf("\n  %-6d|   %-16s    %-10.2f   %-10s   %-10d \n", id, nombre, peso, raza, edad);
+			printf("\n  %-10d|   %-10s  %-10.2f  %-10d  %-8s \n  ", id, nombre, peso, edad, raza);
 		}
 		else
 		{
@@ -227,9 +228,9 @@ int perrito_showList(LinkedList* this)
 void perrito_posterList()
 {
 	printf("\n\t  ## LISTADO DE PERRITOS ##");
-	printf("\n__________________________________________________________\n");
-	printf("\n  %-6s     %-14s%-14s    %-20s    %-14s \n","ID ","NOMBRE "," PESO    ","EDAD  ", " RAZA  ");
-	printf("__________________________________________________________\n");
+	printf("\n_____________________________________________________________________\n");
+	printf("\n  %-6s     %-14s%-10s  %-15s  %-10s \n","ID ","NOMBRE "," PESO    ","EDAD  ", " RAZA  ");
+	printf("______________________________________________________________________\n");
 }
 
 int perrito_sortNames(void* thisOne, void* thisTwo)

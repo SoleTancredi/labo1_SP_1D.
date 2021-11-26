@@ -20,7 +20,7 @@ int main(void)
 {
 	LinkedList* perritoList  = ll_newLinkedList();
 	int option;
-	Perrito* pbuffer;
+
 
 	 do
 	 {
@@ -48,7 +48,14 @@ int main(void)
 					}
 					break;
 				case 2:
-
+                  if( controller_sortPerritos(perritoList) == 0)
+				   {
+					   controller_ListPerritos(perritoList);
+				   }
+                  else
+					{
+						printf("\n X No se ha realizado el ordenamiento.");
+					}
 
 					break;
 				case 3:

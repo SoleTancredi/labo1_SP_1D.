@@ -65,51 +65,21 @@ int controller_ListPerritos(LinkedList* pArrayListPerritos)
  * \return int
  *
  */
-/*int controller_sortPerritos(LinkedList* pArrayListPerritos)//  OJO ACA REFACTORIZAR
+int controller_sortPerritos(LinkedList* pArrayListPerritos)
 {
 	int retorno = -1;
-	int orden;
-	int criterio;
 
 	if(pArrayListPerritos != NULL)
 	{
-		criterio = employee_menuSortStandard();
-		if(criterio != 5)
+		if(ll_sort(pArrayListPerritos, perrito_sortNames, 1) == 0)
 		{
-		   orden = employee_menuSortWay();
-			if(orden == 2)
-			{
-				orden = 0;
-			}
-		}
 
-			switch(criterio)
-			{
-				case 1:
-					ll_sort(pArrayListEmployee, employee_sortId, orden);
-					retorno = 0;
-					break;
-				case 2:
-					ll_sort(pArrayListEmployee, employee_sortNames, orden);
-					retorno = 0;
-					break;
-				case 3:
-					ll_sort(pArrayListEmployee, employee_sortHours, orden);
-					retorno = 0;
-					break;
-				case 4:
-					ll_sort(pArrayListEmployee, employee_sortSalary, orden);
-					retorno = 0;
-					break;
-				case 5:
-					printf("\n »» Saliendo...");
-					retorno = 0;
-					break;
-			}
+			retorno = 0;
+		}
 	}
 
     return retorno;
-}*/
+}
 /** \brief Guarda los datos de los perritos en el archivo data.csv (modo texto).
  *
  * \param path char*
